@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+/* AJUSTES RÁPIDOS DOS LOGOS */
+:root {
+  --opella-width: min(22vw, 720px);
+  --opella-top: 3vh;
+
+  --grupofarma-width: min(16vw, 300px);
+  --grupofarma-bottom: 3vh;
+}
+
 html,
 body {
   width: 100%;
@@ -20,104 +29,79 @@ body {
   position: relative;
   width: 100vw;
   height: 100vh;
-
   background-image: url("assets/background-base.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* LOGOS */
-
-.logo-grupofarma {
-  position: absolute;
-
-  left: 2vw;
-  top: 34vh;
-
-  width: min(12vw, 220px);
-  height: auto;
-
-  z-index: 20;
-}
+/* LOGO OPELLA NO TOPO */
 
 .logo-opella {
-  width: 420px;
-  position: absolute;
-
-  left: 21vw;
-  top: 24vh;
-
-  width: min(15vw, 280px);
+  position: fixed;
+  left: 50%;
+  top: var(--opella-top);
+  transform: translateX(-50%);
+  width: var(--opella-width);
   height: auto;
+  z-index: 30;
+}
 
-  z-index: 20;
+/* LOGO GRUPOFARMA NO RODAPÉ */
+
+.logo-grupofarma {
+  position: fixed;
+  left: 50%;
+  bottom: var(--grupofarma-bottom);
+  transform: translateX(-50%);
+  width: var(--grupofarma-width);
+  height: auto;
+  z-index: 30;
 }
 
 /* PODIUM */
 
 .podium {
   position: absolute;
-
   left: 50%;
-  bottom: 5vh;
-
+  bottom: 12vh;
   transform: translateX(-50%);
-
   width: min(82vw, 1450px);
-
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-
   gap: clamp(12px, 2.4vw, 46px);
 }
 
 .duo {
   position: relative;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-
   transform-origin: bottom center;
-
-  transition:
-    transform 0.6s ease,
-    opacity 0.6s ease;
+  transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
 .duo-image {
   width: min(18vw, 320px);
   height: auto;
-
   object-fit: contain;
-
   user-select: none;
   pointer-events: none;
-
   filter: drop-shadow(0 22px 38px rgba(0, 0, 0, 0.38));
 }
 
 .duo-name {
   margin-top: 14px;
-
   padding: 8px 18px;
-
   border-radius: 999px;
-
   font-size: clamp(15px, 1.35vw, 24px);
   font-weight: 700;
-
   color: #ffffff;
-
   background: rgba(0, 0, 0, 0.34);
-
   backdrop-filter: blur(6px);
-
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
-
   white-space: nowrap;
 }
 
@@ -142,11 +126,18 @@ body {
 /* RESPONSIVO */
 
 @media (max-width: 900px) {
+  :root {
+    --opella-width: 34vw;
+    --opella-top: 3vh;
+
+    --grupofarma-width: 28vw;
+    --grupofarma-bottom: 3vh;
+  }
 
   .podium {
     width: 92vw;
     gap: 10px;
-    bottom: 4vh;
+    bottom: 12vh;
   }
 
   .duo-image {
@@ -156,16 +147,5 @@ body {
   .duo-name {
     font-size: 13px;
     padding: 6px 10px;
-  }
-
-  .logo-grupofarma {
-    width: 20vw;
-    top: 28vh;
-  }
-
-  .logo-opella {
-    width: 24vw;
-    top: 20vh;
-    left: 26vw;
   }
 }
