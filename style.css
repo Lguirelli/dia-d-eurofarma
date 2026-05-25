@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-/* AJUSTES RÁPIDOS DOS LOGOS */
+/* AJUSTES DOS LOGOS */
 
 :root {
   --opella-width: min(22vw, 420px);
@@ -28,6 +28,8 @@ body {
 body {
   background: #003f10;
 }
+
+/* FUNDO */
 
 .background-screen {
   position: relative;
@@ -109,7 +111,7 @@ body {
     opacity 0.6s ease;
 }
 
-/* IMAGEM */
+/* IMAGENS DAS DUPLAS */
 
 .duo-image {
   width: min(18vw, 320px);
@@ -120,10 +122,10 @@ body {
   user-select: none;
   pointer-events: none;
 
-  filter: drop-shadow(0 22px 38px rgba(0, 0, 0, 0.38));
+  filter: none;
 }
 
-/* NOME */
+/* NOMES */
 
 .duo-name {
   margin-top: 14px;
@@ -140,12 +142,12 @@ body {
   padding: 0;
 
   text-shadow:
-    0 3px 10px rgba(0,0,0,0.45);
+    0 3px 10px rgba(0, 0, 0, 0.45);
 
   white-space: nowrap;
 }
 
-/* POSIÇÕES */
+/* CAMADAS */
 
 .place-1 {
   z-index: 4;
