@@ -48,7 +48,9 @@ function readValues(text) {
     .filter(Boolean)
 
     .map((line) => {
-      const valueMatch = line.match(/(\d+(?:[,.]\d+)?)\s*$/);
+
+      const valueMatch =
+        line.match(/(\d+(?:[,.]\d+)?)\s*$/);
 
       if (!valueMatch) return null;
 
@@ -87,6 +89,16 @@ function renderPodium() {
   const highestValue =
     Math.max(...data.map((item) => item.value)) || 1;
 
+  /* EMPATE */
+
+  const winners =
+    data.filter(
+      (item) => item.value === highestValue
+    );
+
+  const hasTie =
+    winners.length > 1;
+
   data.forEach((item) => {
 
     const duo = document.querySelector(
@@ -112,16 +124,35 @@ function renderPodium() {
     duo.style.transform =
       `scale(${visualScale})`;
 
-    /* COROA */
+    /* REMOVE GLOW ANTIGO */
 
-    image.src =
-      item.value === highestValue
-        ? duoMap[item.id].crown
-        : duoMap[item.id].normal;
+    duo.classList.remove("winner-glow");
 
-    /* TEXTOS */
+    /* PRIMEIRO LUGAR */
 
-    image.alt = duoMap[item.id].label;
+    if (item.value === highestValue) {
+
+      /* GLOW */
+
+      duo.classList.add("winner-glow");
+
+      /* COROA SOMENTE SEM EMPATE */
+
+      image.src =
+        hasTie
+          ? duoMap[item.id].normal
+          : duoMap[item.id].crown;
+
+    } else {
+
+      image.src =
+        duoMap[item.id].normal;
+    }
+
+    /* TEXTO */
+
+    image.alt =
+      duoMap[item.id].label;
 
     nameTag.textContent =
       duoMap[item.id].label;
