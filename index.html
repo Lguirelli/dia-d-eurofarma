@@ -3,66 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Ranking Opella</title>
-
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-
   <main class="background-screen">
 
+    <img class="logo-grupofarma" src="assets/grupofarma-logo.png" alt="GrupoFarma" />
+    <img class="logo-opella" src="assets/opella-logo.png" alt="Opella" />
+
     <section class="podium" id="podium">
-
       <div class="duo" data-duo="marcelly-raquel">
-        <img
-          class="duo-image"
-          src="assets/duplas/marcelly-raquel.png"
-          alt="Marcelly e Raquel"
-        />
-
-        <span class="duo-name">
-          Marcelly • Raquel
-        </span>
+        <img class="duo-image" src="assets/duplas/marcelly-raquel.png" alt="Marcelly e Raquel" />
+        <span class="duo-name">Marcelly • Raquel</span>
       </div>
 
       <div class="duo" data-duo="michele-debora">
-        <img
-          class="duo-image"
-          src="assets/duplas/michele-debora.png"
-          alt="Michele e Debora"
-        />
-
-        <span class="duo-name">
-          Michele • Debora
-        </span>
+        <img class="duo-image" src="assets/duplas/michele-debora.png" alt="Michele e Debora" />
+        <span class="duo-name">Michele • Debora</span>
       </div>
 
       <div class="duo" data-duo="yasmin-laylla">
-        <img
-          class="duo-image"
-          src="assets/duplas/yasmin-laylla.png"
-          alt="Yasmin e Laylla"
-        />
-
-        <span class="duo-name">
-          Yasmin • Laylla
-        </span>
+        <img class="duo-image" src="assets/duplas/yasmin-laylla.png" alt="Yasmin e Laylla" />
+        <span class="duo-name">Yasmin • Laylla</span>
       </div>
 
       <div class="duo" data-duo="alicia-ana">
-        <img
-          class="duo-image"
-          src="assets/duplas/alicia-ana.png"
-          alt="Alicia e Ana"
-        />
-
-        <span class="duo-name">
-          Alicia • Ana
-        </span>
+        <img class="duo-image" src="assets/duplas/alicia-ana.png" alt="Alicia e Ana" />
+        <span class="duo-name">Alicia • Ana</span>
       </div>
-
     </section>
 
     <textarea id="inputValores" hidden>
@@ -74,55 +44,6 @@ Alicia-Ana 60
 
   </main>
 
-  <script>
-    const textarea = document.getElementById("inputValores");
-    const podium = document.getElementById("podium");
-
-    function atualizarRanking() {
-      const linhas = textarea.value
-        .trim()
-        .split("\n")
-        .map((linha) => {
-          const partes = linha.trim().split(" ");
-          const valor = Number(partes.pop());
-          const nome = partes.join(" ").toLowerCase();
-
-          return {
-            nome,
-            valor,
-          };
-        });
-
-      linhas.sort((a, b) => b.valor - a.valor);
-
-      linhas.forEach((item, index) => {
-        const card = document.querySelector(
-          `[data-duo="${item.nome}"]`
-        );
-
-        if (!card) return;
-
-        podium.appendChild(card);
-
-        card.classList.remove(
-          "place-1",
-          "place-2",
-          "place-3",
-          "place-4"
-        );
-
-        card.classList.add(`place-${index + 1}`);
-
-        const escalas = [1.28, 1.05, 0.9, 0.82];
-
-        card.style.transform = `scale(${escalas[index]})`;
-      });
-    }
-
-    atualizarRanking();
-
-    setInterval(atualizarRanking, 2000);
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
