@@ -1,65 +1,118 @@
-:root {
-  --bg-green: #053E0F;
-  --accent-green: #19C738;
-  --dark-accent: #1F4A15;
-  --white: #FFFFFF;
-}
-
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-html,
 body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--bg-green);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
+  background: #053e0f;
 }
 
 .screen {
   position: relative;
   width: 100vw;
   height: 100vh;
-  min-width: 1280px;
-  min-height: 720px;
-  overflow: hidden;
-  background: var(--bg-green);
-  aspect-ratio: 16 / 9;
-}
-
-.opella {
-  position: absolute;
-  top: 4.6%;
-  left: 50%;
-  width: 16.25%;
-  max-width: 312px;
-  transform: translateX(-50%);
-}
-
-.crown {
-  position: absolute;
-  top: 3.9%;
-  left: 4.9%;
-  width: 27.4%;
-  max-width: 526px;
-  opacity: 1;
+  background-image: url("assets/background-base.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .ranking-area {
   position: absolute;
-  left: 8%;
-  right: 8%;
-  top: 20%;
-  bottom: 18%;
+  width: 76%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -43%);
+  text-align: center;
 }
 
-.grupofarma {
+.ranking-area h1 {
+  color: #ffffff;
+  font-size: 56px;
+  font-weight: 800;
+  margin-bottom: 48px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.card {
+  position: relative;
+  min-height: 260px;
+  padding: 38px 24px 32px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #053e0f;
+}
+
+.first-place {
+  transform: translateY(-20px);
+  border: 4px solid #f5c542;
+}
+
+.crown {
   position: absolute;
+  width: 96px;
+  top: -68px;
   left: 50%;
-  bottom: 6.4%;
-  width: 12.86%;
-  max-width: 247px;
   transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.position {
+  font-size: 52px;
+  font-weight: 900;
+  margin-bottom: 18px;
+}
+
+.team {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
+.score {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1b6b2b;
+}
+
+@media (max-width: 1200px) {
+  .ranking-area {
+    width: 86%;
+  }
+
+  .ranking-area h1 {
+    font-size: 42px;
+  }
+
+  .cards {
+    gap: 18px;
+  }
+
+  .team {
+    font-size: 24px;
+  }
+
+  .score {
+    font-size: 20px;
+  }
 }
