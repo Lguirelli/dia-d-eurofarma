@@ -6,177 +6,123 @@
   box-sizing: border-box;
 }
 
-/* AJUSTES DOS LOGOS */
-
 :root {
-  --opella-width: min(30vw, 420px);
+  --opella-width: 30vw;
+  --opella-min-width: 180px;
+  --opella-max-width: 720px;
   --opella-top: 3vh;
 
-  --grupofarma-width: min(16vw, 300px);
+  --grupofarma-width: 12vw;
+  --grupofarma-min-width: 90px;
+  --grupofarma-max-width: 300px;
   --grupofarma-bottom: 3vh;
 }
 
 html,
 body {
   width: 100%;
-  height: 100%;
-  overflow: hidden;
-
+  min-height: 100%;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
   background: #003f10;
+  overflow-x: hidden;
 }
-
-/* FUNDO */
 
 .background-screen {
   position: relative;
-
   width: 100vw;
-  height: 100vh;
-
+  min-height: 100vh;
   background-image: url("assets/background-base.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
-
-/* LOGO OPELLA */
 
 .opella {
   position: fixed;
-
   left: 50%;
   top: var(--opella-top);
-
   transform: translateX(-50%);
-
-  width: var(--opella-width);
+  width: clamp(var(--opella-min-width), var(--opella-width), var(--opella-max-width));
   height: auto;
-
   z-index: 30;
 }
-
-/* LOGO GRUPOFARMA */
 
 .grupofarma {
   position: fixed;
-
   left: 50%;
   bottom: var(--grupofarma-bottom);
-
   transform: translateX(-50%);
-
-  width: var(--grupofarma-width);
+  width: clamp(var(--grupofarma-min-width), var(--grupofarma-width), var(--grupofarma-max-width));
   height: auto;
-
   z-index: 30;
 }
 
-/* PODIUM */
-
 .podium {
   position: absolute;
-
   left: 50%;
   bottom: 12vh;
-
   transform: translateX(-50%);
-
   width: min(82vw, 1450px);
-
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-
   gap: clamp(12px, 2.4vw, 46px);
 }
 
-/* DUPLAS */
-
 .duo {
   position: relative;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-
   transform-origin: bottom center;
-
-  transition:
-    transform 0.6s ease,
-    opacity 0.6s ease;
+  transition: transform 0.6s ease, opacity 0.6s ease;
 }
-
-/* IMAGENS DAS DUPLAS */
 
 .duo-image {
   width: min(18vw, 320px);
   height: auto;
-
   object-fit: contain;
-
   user-select: none;
   pointer-events: none;
-
   filter: none;
 }
 
-/* NOMES */
-
 .duo-name {
   margin-top: 14px;
-
   font-family: 'Anek Kannada', sans-serif;
   font-size: clamp(18px, 1.4vw, 28px);
   font-weight: 700;
   line-height: 1;
-
   color: #ffffff;
-
   background: transparent;
-
   padding: 0;
-
-  text-shadow:
-    0 3px 10px rgba(0, 0, 0, 0.45);
-
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
   white-space: nowrap;
 }
 
-/* GLOW DO PRIMEIRO LUGAR */
-
 .winner-glow::before {
   content: "";
-
   position: absolute;
-
   left: 50%;
   top: 45%;
-
   width: 145%;
   height: 105%;
-
   transform: translate(-50%, -50%);
-
   background: radial-gradient(
     circle,
     rgba(0, 255, 80, 0.45) 0%,
     rgba(0, 255, 80, 0.25) 38%,
     rgba(0, 255, 80, 0) 72%
   );
-
   filter: blur(24px);
-
   z-index: -1;
-
   pointer-events: none;
 }
-
-/* CAMADAS */
 
 .place-1 {
   z-index: 4;
@@ -194,36 +140,66 @@ body {
   z-index: 1;
 }
 
-/* RESPONSIVO */
-
 @media (max-width: 900px) {
-
   :root {
-    --opella-width: 34vw;
-    --opella-top: 3vh;
+    --opella-width: 52vw;
+    --opella-min-width: 150px;
+    --opella-max-width: 320px;
+    --opella-top: 2vh;
 
-    --grupofarma-width: 28vw;
-    --grupofarma-bottom: 3vh;
+    --grupofarma-width: 24vw;
+    --grupofarma-min-width: 80px;
+    --grupofarma-max-width: 160px;
+    --grupofarma-bottom: 2vh;
+  }
+
+  .background-screen {
+    min-height: 100svh;
   }
 
   .podium {
-    width: 92vw;
-
-    gap: 10px;
-
+    width: 94vw;
     bottom: 12vh;
+    gap: 8px;
   }
 
   .duo-image {
-    width: 21vw;
+    width: 22vw;
   }
 
   .duo-name {
-    font-size: 13px;
+    margin-top: 8px;
+    font-size: clamp(10px, 2.7vw, 14px);
   }
 
   .winner-glow::before {
     width: 160%;
     height: 115%;
+  }
+}
+
+@media (max-width: 520px) {
+  :root {
+    --opella-width: 58vw;
+    --opella-min-width: 140px;
+    --opella-max-width: 260px;
+
+    --grupofarma-width: 30vw;
+    --grupofarma-min-width: 75px;
+    --grupofarma-max-width: 130px;
+  }
+
+  .podium {
+    width: 96vw;
+    bottom: 14vh;
+    gap: 4px;
+  }
+
+  .duo-image {
+    width: 23vw;
+  }
+
+  .duo-name {
+    font-size: clamp(9px, 2.5vw, 12px);
   }
 }
