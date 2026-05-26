@@ -7,31 +7,19 @@
 }
 
 :root {
-
-  /* LOGOS */
-
   --opella-width: clamp(180px, 12vw, 620px);
   --opella-top: clamp(14px, 3vh, 40px);
 
   --grupofarma-width: clamp(90px, 10vw, 260px);
   --grupofarma-bottom: clamp(14px, 3vh, 38px);
 
-  /* RANKING */
-
   --ranking-width: clamp(700px, 96vw, 2600px);
   --ranking-bottom: clamp(80px, 10vh, 140px);
 
-  /* IMAGENS DAS DUPLAS */
+  --duo-width: clamp(180px, 21vw, 360px);
+  --duo-gap: clamp(18px, 2.6vw, 58px);
 
-  --duo-image-width: clamp(220px, 36vw, 640px);
-
-  /* ESPAÇAMENTO */
-
-  --duo-gap: clamp(12px, 2vw, 44px);
-
-  /* TEXTO */
-
-  --name-size: clamp(18px, 2vw, 42px);
+  --name-size: clamp(16px, 1.35vw, 28px);
 }
 
 html,
@@ -46,165 +34,107 @@ body {
   overflow: hidden;
 }
 
-/* FUNDO */
-
 .background-screen {
   position: relative;
-
   width: 100vw;
   height: 100svh;
   min-height: 100vh;
-
   background-image: url("assets/background-base.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   overflow: hidden;
 }
 
-/* LOGO OPELLA */
-
 .opella {
   position: fixed;
-
   left: 50%;
   top: var(--opella-top);
-
   transform: translateX(-50%);
-
   width: var(--opella-width);
   height: auto;
-
   z-index: 30;
 }
-
-/* LOGO GRUPOFARMA */
 
 .grupofarma {
   position: fixed;
-
   left: 50%;
   bottom: var(--grupofarma-bottom);
-
   transform: translateX(-50%);
-
   width: var(--grupofarma-width);
   height: auto;
-
   z-index: 30;
 }
 
-/* PODIUM */
-
 .podium {
   position: absolute;
-
   left: 50%;
   bottom: var(--ranking-bottom);
-
   transform: translateX(-50%);
-
   width: var(--ranking-width);
-
   display: flex;
   justify-content: center;
   align-items: flex-end;
-
   gap: var(--duo-gap);
 }
 
-/* DUPLAS */
-
 .duo {
   position: relative;
-
-  flex: 1 1 0;
-
-  max-width: var(--duo-image-width);
-
+  flex: 0 0 var(--duo-width);
+  width: var(--duo-width);
   min-width: 0;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-
   transform-origin: bottom center;
-
-  transition:
-    transform 0.6s ease,
-    opacity 0.6s ease;
 }
-
-/* IMAGEM */
 
 .duo-image {
   width: 100%;
   height: auto;
-
   object-fit: contain;
-
   user-select: none;
   pointer-events: none;
-
   filter: none;
+  transform-origin: bottom center;
+  transition: transform 0.6s ease;
 }
 
-/* NOMES */
-
 .duo-name {
+  width: 100%;
   margin-top: clamp(6px, 1vh, 14px);
-
   font-family: 'Anek Kannada', sans-serif;
   font-size: var(--name-size);
   font-weight: 700;
-  line-height: 1;
-
+  line-height: 1.05;
   color: #ffffff;
-
   background: transparent;
-
   padding: 0;
-
-  text-shadow:
-    0 3px 10px rgba(0, 0, 0, 0.45);
-
-  white-space: nowrap;
-
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+  white-space: normal;
   text-align: center;
+  overflow-wrap: break-word;
 }
-
-/* GLOW */
 
 .winner-glow::before {
   content: "";
-
   position: absolute;
-
   left: 50%;
   top: 45%;
-
   width: 145%;
   height: 105%;
-
   transform: translate(-50%, -50%);
-
   background: radial-gradient(
     circle,
     rgba(0, 255, 80, 0.45) 0%,
     rgba(0, 255, 80, 0.25) 38%,
     rgba(0, 255, 80, 0) 72%
   );
-
   filter: blur(24px);
-
   z-index: -1;
-
   pointer-events: none;
 }
-
-/* CAMADAS */
 
 .place-1 {
   z-index: 4;
@@ -222,12 +152,8 @@ body {
   z-index: 1;
 }
 
-/* TABLET */
-
 @media (max-width: 900px) {
-
   :root {
-
     --opella-width: clamp(140px, 54vw, 320px);
     --opella-top: 2vh;
 
@@ -237,28 +163,17 @@ body {
     --ranking-width: 96vw;
     --ranking-bottom: 13vh;
 
-    --duo-image-width: 34vw;
-
+    --duo-width: 42vw;
     --duo-gap: 10px;
 
     --name-size: clamp(10px, 2.7vw, 18px);
   }
 
   .podium {
-
     flex-wrap: wrap;
-
-    justify-content: center;
-    align-content: center;
-
     row-gap: 18px;
     column-gap: 10px;
-
     padding: 0 2vw;
-  }
-
-  .duo {
-    flex: 0 1 42%;
   }
 
   .winner-glow::before {
@@ -267,33 +182,22 @@ body {
   }
 }
 
-/* MOBILE */
-
 @media (max-width: 520px) {
-
   :root {
-
     --opella-width: clamp(130px, 20vw, 260px);
-
     --grupofarma-width: clamp(70px, 40vw, 130px);
 
     --ranking-width: 96vw;
     --ranking-bottom: 14vh;
 
-    --duo-image-width: 38vw;
-
+    --duo-width: 42vw;
     --duo-gap: 8px;
 
     --name-size: clamp(10px, 2.8vw, 14px);
   }
 
   .podium {
-
     row-gap: 16px;
     column-gap: 10px;
-  }
-
-  .duo {
-    flex: 0 1 42%;
   }
 }
