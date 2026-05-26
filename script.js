@@ -121,8 +121,8 @@ function renderPodium() {
     const visualScale =
       0.75 + rawScale * 0.45;
 
-    duo.style.transform =
-      `scale(${visualScale})`;
+    duo.style.transform = "";
+    image.style.transform = `scale(${visualScale})`;
 
     duo.classList.remove("winner-glow");
 
